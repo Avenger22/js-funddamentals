@@ -41,15 +41,32 @@ let garage = ["volvo", "audi", "mercedes", "bmw"]
 // 4.1 add 'ferrari' to the garage
 garage.push("ferrari")
 
+
 // 4.2 remove Mercedes from the array
 let filteredGarage = []
 let garageCopy = [...garage]
 filteredGarage = garageCopy.filter(car => car !== "mercedes")
 
+
 // 4.3 replace the 2nd car in the array with 'lada'
 garage[1] = "lada"
 
+
 // 4.4 create an array with all of the cars in the garage capitalized
+for (const element of garage) {
+    element.toLowerCase()
+}
+
+const anotherGarage = []
+let finalString = ""
+
+for (const element of garage) {
+    finalString = element.charAt(0).toUpperCase() + element.slice(1)
+    anotherGarage.push(finalString)
+}
+
+console.log("The capitalized array of garage is :", anotherGarage)
+
 
 // 4.5 find the volvo. pretend you don't know what the array looks like.
 const matchString = garage.find(car => car === "volvo")
@@ -92,5 +109,5 @@ myself.isHungry = false
 // e.g. calling the eat function with an apple argument, in an object where the name is 'Ilir' should return "Ilir ate apple!"
 myself.eat = (food) => `${myself.name} ate ${food}`
 
-console.log(myself)
+console.log("Object of myself is:", myself)
 console.log(myself.eat("grosha"))
