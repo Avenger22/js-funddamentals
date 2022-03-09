@@ -11,35 +11,19 @@ const NicosRepositories = `https://api.github.com/users/minimumviableperson/repo
 //  - return all Nico's repo names as an array of strings.
 
 let arrayInitial = []
-let arrayFinal = []
 
-async function getNamesOfNicosRepos(arrayInitial) {
+async function getNamesOfNicosRepos() {
 
-    try {
-        const response = await fetch(NicosRepositories).then(response => response.json())
-        console.log(response)
-        arrayInitial = [...response]
-        console.log(arrayInitial)
-    }
-
-    catch(err) {
-        console.log(err)
-    }
+    const response = await fetch(NicosRepositories)
+    const array = await response.json()
+    
+    arrayInitial = array.map(item => item.name)
+    console.log(arrayInitial)
 
 }
 
-getNamesOfNicosRepos(arrayInitial)
-console.log(arrayInitial)
-
-for (const element of arrayInitial) {
-
-    arrayFinal = [...arrayFinal, element.name]
-    // console.log(element.name)
-    // console.log(element)
-
-}
-
-console.log(arrayFinal)
+getNamesOfNicosRepos()
+console.log("Array is:", arrayInitial)
 
 // 2. Create a JSON server. Add a /posts endpoint to it, which returns a list of posts.
 
